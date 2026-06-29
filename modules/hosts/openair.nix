@@ -25,6 +25,7 @@ in
       asp.boot
       asp.vm
       asp.network
+      asp.ssh
     ];
 
     nixos = {
