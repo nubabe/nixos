@@ -6,13 +6,13 @@
 
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Flake stuff
@@ -21,7 +21,9 @@
 
     import-tree.url = "github:denful/import-tree";
 
-    # den.url = "github:denful/den";
+    # flake-aspects.url = "github:denful/flake-aspects";
+
+    den.url = "github:denful/den";
 
     # Nixos Modules
     disko.url = "github:nix-community/disko";
@@ -32,9 +34,14 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    stylix.url = "github:nix-community/stylix/release-25.11";
+    stylix.url = "github:nix-community/stylix/release-26.05";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.flake-parts.follows = "flake-parts";
+
+    companion.url = "github:noblepayne/bitfocus-companion-flake";
+    # companion.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    # companion.url = "path:/home/nubabe/files/projects/bitfocus-companion-flake";
 
   };
 
