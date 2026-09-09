@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 while getopts "ha:p:u:n:r" opt; do
     case $opt in
     h)
-        echo "Usage: deploy.sh [-h] [-a ip-address] [-p port] [-u user] [-n hostname] [-r]"
+        echo "Usage: deploy.sh -a ip-address -n hostname [-h] [-p port] [-u user] [-r]"
+        echo "  -a  target IP address (required)"
+        echo "  -n  hostname to deploy (required)"
+        echo "  -p  SSH port (default 22)"
+        echo "  -u  SSH user (default nixos)"
+        echo "  -r  build on the remote host"
         exit 0
         ;;
     a)
@@ -28,12 +34,12 @@ while getopts "ha:p:u:n:r" opt; do
     esac
 done
 
-if [ -z "$IP_ADDRESS" ]; then
+if [ -z "${IP_ADDRESS:-}" ]; then
     echo "No IP-Address provided" >&2
     exit 1
 fi
 
-if [ -z "$HOST_NAME" ]; then
+if [ -z "${HOST_NAME:-}" ]; then
     echo "No host to deploy provided" >&2
     exit 1
 fi
@@ -43,6 +49,7 @@ SSH_USER=${SSH_USER:-"nixos"}
 REMOTE_BUILD=${REMOTE_BUILD:-"local"}
 
 read -rsp "SSH Password: " SSHPASS
+echo
 
 # Create a temporary directory
 temp=$(mktemp -d)
@@ -60,7 +67,7 @@ install -d -m755 "$temp/etc/ssh"
 ssh-keygen \
     -t ed25519 \
     -a 100 \
-    -C "testing" \
+    -C "$HOST_NAME" \
     -f "$temp/etc/ssh/ssh_host_ed25519_key" \
     -N ""
 
