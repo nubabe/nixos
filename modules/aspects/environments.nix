@@ -1,18 +1,12 @@
-{ ... }:
+_:
+
+# Per-deployment tweaks. A host includes exactly one of these to pick the SSH
+# port (and any other environment-specific settings) for where it runs.
 
 {
 
   den.aspects = {
-    "env/nubabe".nixos = {
-      nubabe.services.tailscale.apiKeyFile = null;
-      services.tailscale.authKeyFile = null;
-      services.openssh.ports = [ 2009 ];
-    };
-    "env/pgTechEvent".nixos = {
-      nubabe.services.tailscale.apiKeyFile = null;
-      services.tailscale.authKeyFile = null;
-      services.openssh.ports = [ 1868 ];
-    };
+    nubabe-env.nixos.services.openssh.ports = [ 2009 ];
   };
 
 }
