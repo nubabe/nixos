@@ -10,27 +10,33 @@ in
 
     includes = [
       asp.uwsm
+      asp.greetd
       asp.pipewire
     ];
 
-    provides.to-hosts = {
-      includes = [ asp.greetd ];
+    nixos = { pkgs, ... }: {
 
-      nixos = { pkgs, ... }: {
-
-        programs.hyprland = {
-          enable = true;
-          withUWSM = true;
-          package = pkgs.unstable.hyprland;
-          portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
-        };
-        programs.uwsm.package = pkgs.unstable.uwsm;
-
+      programs.hyprland = {
+        enable = true;
+        withUWSM = false;
+        package = pkgs.unstable.hyprland;
+        portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
       };
+      programs.uwsm.package = pkgs.unstable.uwsm;
 
     };
 
-    homeManager = { };
+    homeManager = {
+
+      home.sessionVariables.NIXOS_OZONE_WL = "1";
+
+      wayland.windowManager.hyprland = {
+        enable = true;
+        package = null;
+        portalPackage = null;
+        systemd.enable = false;
+      };
+    };
 
   };
 

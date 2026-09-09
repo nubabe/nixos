@@ -13,6 +13,12 @@
       # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark-dark.yaml";
       polarity = "dark";
+      opacity = {
+        applications = 0.9;
+        terminal = 0.9;
+        desktop = 0.3;
+        popups = 0.8;
+      };
       fonts = {
         monospace = {
           package = pkgs.nerd-fonts.caskaydia-cove;

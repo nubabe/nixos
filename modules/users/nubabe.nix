@@ -18,16 +18,17 @@ in
       asp.zsh
       asp.oh-my-posh
 
-      asp.ssh
+      asp.ssh-access
     ];
 
   };
-  den.aspects.nubabeGraphical = {
+  # nubabe + a graphical session. Desktop is a user trait: including the hyprland
+  # aspect here routes its nixos bits (compositor + greeter) onto the host and its
+  # homeManager bits onto nubabe.
+  den.aspects.nubabe-graphical = {
     includes = [
       asp.nubabe
-
       asp.hyprland
-      asp.pipewire
     ];
   };
 

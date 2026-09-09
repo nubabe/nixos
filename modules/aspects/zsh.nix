@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
 
@@ -46,16 +46,11 @@
               zstyle ':completion:*:descriptions' format $'\e[01;33m-- %d --\e[00m'
               zstyle ':completion:*:warnings' format $'\e[01;31mNo matches for: %d\e[00m'
             '';
-
-            generalConfig = lib.mkOrder 1000 "";
           in
           lib.mkMerge [
             earlyConfig
             preCompInit
-            generalConfig
           ];
-
-        plugins = [ ];
       };
 
       home.shellAliases = {
