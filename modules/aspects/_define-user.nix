@@ -3,19 +3,10 @@ let
   description = ''
     Defines a user at OS and Home levels.
 
-    Works in NixOS/Darwin and standalone Home-Manager
+    Works in NixOS/Darwin and standalone Home-Manager.
 
-    ## Usage
-
-       # for NixOS/Darwin
-       den.aspects.my-user.includes = [ den.batteries.define-user ]
-
-       # for standalone home-manager
-       den.aspects.my-home.includes = [ den.batteries.define-user ]
-
-    or globally (automatically applied depending on context):
-
-       den.default.includes = [ den.batteries.define-user ]
+    Applied to every entity via den.default.includes (see modules/den.nix).
+    Equivalent to the upstream den.batteries.define-user battery.
   '';
 
   isRoot = user: user.userName == "root";
@@ -63,7 +54,7 @@ let
     };
 in
 {
-  den.aspects."bat/define-user" = {
+  den.aspects.define-user = {
     name = "define-user";
     inherit description;
     includes = [

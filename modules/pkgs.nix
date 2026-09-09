@@ -1,4 +1,9 @@
-{ inputs, ... }:
+{
+  inputs,
+  den,
+  withSystem,
+  ...
+}:
 
 let
   nixpkgs-config = {
@@ -7,6 +12,17 @@ let
 in
 
 {
+
+  # Every entity's `os` nixpkgs instance comes from the flake-parts perSystem
+  # `pkgs` (unfree allowed + the nixpkgs-unstable overlay), wired onto all hosts
+  # through `den.default.includes`.
+  den.default.includes = [ den.aspects.nixpkgs ];
+
+  den.aspects.nixpkgs.os =
+    { host, ... }:
+    {
+      nixpkgs.pkgs = withSystem host.system ({ pkgs, ... }: pkgs);
+    };
 
   perSystem =
     { system, ... }:
@@ -19,7 +35,7 @@ in
     };
 
   flake.overlays = {
-    nixpkgs-unstable = final: prev: {
+    nixpkgs-unstable = _final: prev: {
       unstable = import inputs.nixpkgs-unstable {
         inherit (prev.stdenv.hostPlatform) system;
         config = nixpkgs-config;

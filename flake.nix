@@ -21,6 +21,9 @@
 
     import-tree.url = "github:denful/import-tree";
 
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     # flake-aspects.url = "github:denful/flake-aspects";
 
     den.url = "github:denful/den";
