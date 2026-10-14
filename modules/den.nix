@@ -16,12 +16,25 @@
   # attr-path in this repo. Declare new host/user metadata with
   # `den.schema.{host,user}.imports = [ { options.<name> = lib.mkOption {...}; } ]`.
   den.schema.host.imports = [ den.lib.strict ];
-  den.schema.user.imports = [ den.lib.strict ];
+  den.schema.user.imports = [
+    den.lib.strict
+    (
+      { config, lib, ... }:
+      {
+        options.email = lib.mkOption {
+          type = lib.types.str;
+          description = "Email used for git commits etc., sourced from the user's own aspect.";
+        };
+        config.email = lib.mkDefault den.aspects.${config.name}.email;
+      }
+    )
+  ];
+
+  # Lets `den.aspects.<user>.email` hold a plain value without den's key
+  # classifier mistaking `email` for an unknown class.
+  den.reservedKeys = [ "email" ];
 
   den.default = {
-    nixos = _: {
-      # hardware.facter.reportPath = ../hardware-configuration/${host.name}.json;
-    };
     includes = [
       den.batteries.define-user
       # den.aspects.define-user
