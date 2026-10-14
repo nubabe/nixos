@@ -1,0 +1,15 @@
+keys:
+  - &nubabe_dev age1lkz2h3qyjj0wc60t3du2tq9s0f3qtx4uqzknqc77wqhkjmq4tyns98u6ux
+  - &oracle-vps age1ewrvl3mqr0m4t6f647sukqsevxhqkvhkq0nzp7yg76kxgugxvunqph6fau
+  - &prv3-9 age1lkza66llepyhj49dwq96a4fsly7qyevjaylly3grsduffekdg9lqpufwrh
+creation_rules:
+  - path_regex: secrets.*nubabe.*\.yaml$
+    key_groups:
+      - age:
+        - *oracle-vps
+        - *prv3-9
+        - *nubabe_dev
+  - path_regex: secrets.*\.yaml$
+    key_groups:
+      - age:
+        - *nubabe_dev
