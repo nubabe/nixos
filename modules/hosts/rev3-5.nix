@@ -5,16 +5,20 @@ in
 {
 
   den.hosts.x86_64-linux.rev3-5 = {
+    stateVersion = "26.05";
     disk = {
       device = "/dev/nvme0n1";
       swap = "16G";
       rootSize = "64G";
       home = true;
     };
-    users.nubabe.aspect.includes = [
-      asp.nubabe-graphical
-      den.batteries.primary-user
-    ];
+    users.nubabe = {
+      aspect.includes = [
+        asp.nubabe-graphical
+        den.batteries.primary-user
+      ];
+      stateVersion = "26.05";
+    };
   };
 
   den.aspects.rev3-5 = {
@@ -27,6 +31,9 @@ in
       asp.tailscale
       asp.vm
       asp.network
+      asp.network._.wireless
+      asp.network._.networkmanager
+      asp.bluetooth
       asp.stylix
       asp.disko
       asp.sshd
