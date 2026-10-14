@@ -11,7 +11,8 @@
     stylix = {
       enable = true;
       # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark-dark.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+      # base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark-dark.yaml";
       polarity = "dark";
       opacity = {
         applications = 0.9;

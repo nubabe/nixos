@@ -4,6 +4,8 @@ _:
 
   den.aspects.zsh = {
 
+    nixos.environment.pathsToLink = [ "/share/zsh" ];
+
     homeManager = { lib, ... }: {
       home.shell.enableZshIntegration = true;
 

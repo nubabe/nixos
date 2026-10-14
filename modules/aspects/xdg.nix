@@ -23,13 +23,16 @@ _:
           text = ''
             MIME=$(handlr mime --json "$@" | jq -r '.[0].mime')
             APP=$(handlr get --json "$MIME" | jq -r '.cmd | sub("\\s+$"; "")')
-            exec ${cmd} "$APP" "$@"
-            # exec ${cmd} handlr open "$@"
+            # shellcheck disable=SC2086
+            exec ${cmd}$APP "$@"
+            # exec ${cmd}handlr open "$@"
           '';
         };
 
       in
       {
+
+        xdg.enable = true;
 
         home.packages = [
           pkgs.handlr-regex

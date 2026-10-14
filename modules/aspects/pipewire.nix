@@ -1,8 +1,9 @@
-_:
+{ inputs, den, ... }:
 
 {
 
   den.aspects.pipewire = {
+    includes = [ den.aspects.wiremix ];
     nixos = {
       services.pipewire = {
         enable = true;
@@ -13,6 +14,14 @@ _:
         alsa.enable = true;
         jack.enable = true;
       };
+    };
+  };
+
+  den.aspects.wiremix.homeManager = { pkgs, ... }: {
+    imports = [ "${inputs.home-manager-unstable}/modules/programs/wiremix.nix" ];
+    programs.wiremix = {
+      enable = true;
+      package = pkgs.unstable.wiremix;
     };
   };
 

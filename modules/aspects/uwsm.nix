@@ -35,7 +35,7 @@
         package
       ];
 
-      home.sessionVariables.APP_RUNNER = "${lib.getExe package}";
+      home.sessionVariables.APP_RUNNER = "${lib.getExe package} "; # Leave space
 
     };
 
