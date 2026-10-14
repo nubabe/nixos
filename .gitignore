@@ -2,6 +2,8 @@
 result
 result-*
 
+*.qcow2
+
 # Ignore automatically generated direnv output
 .direnv
 

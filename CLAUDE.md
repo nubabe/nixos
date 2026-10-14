@@ -20,8 +20,10 @@ touching `den.aspects` / `den.hosts` / `den.schema` / `provides` / policies.
 - Build / smoke-test a host: `nix build .#nixosConfigurations.<host>.config.system.build.vm`
   — use the VM build, **not** `nixos-rebuild`, to verify changes.
 - A real toplevel build (`.config.system.build.toplevel`) needs a non-empty
-  `hardware-configuration/<host>.json` (nixos-facter). `den.nix` keeps
-  `hardware.facter.reportPath` commented out so VM builds work without it.
+  `hardware-configuration/<host>.json` (nixos-facter). The `facter` aspect
+  (`modules/aspects/facter.nix`, global via `den.default.includes`) sets
+  `hardware.facter.reportPath` only when that file has real content, so VM
+  builds work with an empty/absent report.
 
 ## Gotchas
 
