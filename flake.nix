@@ -12,6 +12,9 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    home-manager-unstable.url = "github:nix-community/home-manager";
+    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -45,6 +48,17 @@
     # companion.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # companion.url = "path:/home/nubabe/files/projects/bitfocus-companion-flake";
+
+    # Home-Manager Modules
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Packages
+
+    wlctl.url = "github:aashish-thapa/wlctl";
+    wlctl.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
