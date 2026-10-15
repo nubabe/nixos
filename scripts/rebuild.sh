@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.." || exit 1
 
-while getopts "ha:p:u:n:r" opt; do
+while getopts "ha:p:u:n:rs" opt; do
   case $opt in
   h)
     echo "Usage: rebuild.sh -a ip-address -n hostname [-h] [-p port] [-u user] [-r]"
