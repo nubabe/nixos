@@ -5,9 +5,8 @@
   den.aspects.fastfetch.homeManager = {
     programs.fastfetch = {
       enable = true;
-
-      settings = builtins.fromJson (builtins.readFile "${inputs.self}/dots/fastfetch.jsonc");
     };
+    xdg.configFile."fastfetch/config.jsonc".source = "${inputs.self}/dots/fastfetch.jsonc";
   };
 
 }
