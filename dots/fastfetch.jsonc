@@ -9,7 +9,8 @@
     }
   },
   "display": {
-    "disableLinewrap": true
+    "disableLinewrap": true,
+    "separator": "  "
   },
   "modules": [
     "break",
@@ -19,9 +20,10 @@
       "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
     },
     {
-      "type": "host",
-      "key": " PC",
-      "keyColor": "green"
+      "type": "title",
+      "key": "┌ ┌󱩊",
+      "keyColor": "green",
+      "color": { "user": "white", "at": "white", "host": "white" }
     },
     {
       "type": "cpu",
@@ -67,7 +69,7 @@
     },
     {
       "type": "os",
-      "key": "\ue900 OS",
+      "key": "┌ ┌󰌢",
       "keyColor": "blue",
       "text": "{name} {version}"
     },
