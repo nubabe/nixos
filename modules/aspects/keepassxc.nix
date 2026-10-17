@@ -17,7 +17,6 @@
       };
     };
     programs.librewolf.nativeMessagingHosts = [ config.programs.keepassxc.package ];
-    programs.brave-origin.nativeMessagingHosts = [ config.programs.keepassxc.package ];
   };
 
 }
