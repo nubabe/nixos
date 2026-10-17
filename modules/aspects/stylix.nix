@@ -27,11 +27,17 @@
           package = pkgs.nerd-fonts.caskaydia-cove;
           name = "CaskaydiaCove Nerd Font";
         };
-        serif = config.stylix.fonts.monospace;
-        sansSerif = config.stylix.fonts.monospace;
+        serif = {
+          package = pkgs.noto-fonts;
+          name = "Noto Serif";
+        };
+        sansSerif = {
+          package = pkgs.noto-fonts;
+          name = "Noto Sans";
+        };
         emoji = {
-          package = pkgs.whatsapp-emoji-font;
-          name = "Apple Color Emoji";
+          package = pkgs.noto-fonts-color-emoji;
+          name = "Noto Color Emoji";
         };
       };
     };
