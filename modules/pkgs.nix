@@ -22,16 +22,20 @@ in
     { host, ... }:
     {
       nixpkgs.pkgs = withSystem host.system ({ pkgs, ... }: pkgs);
+      nix.registry.nubabe.flake = inputs.self;
     };
 
   perSystem =
-    { system, ... }:
+    { system, pkgs, ... }:
     {
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         overlays = [ inputs.self.overlays.nixpkgs-unstable ];
         config = nixpkgs-config;
       };
+
+      legacyPackages = pkgs;
+
     };
 
   flake.overlays = {
