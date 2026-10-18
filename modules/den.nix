@@ -15,9 +15,9 @@
   # type for an unconditional throw and breaks every `den.aspects.<x>.<class>`
   # attr-path in this repo. Declare new host/user metadata with
   # `den.schema.{host,user}.imports = [ { options.<name> = lib.mkOption {...}; } ]`.
-  den.schema.host.imports = [ den.lib.strict ];
+  den.schema.host.isStrict = true;
+  den.schema.user.isStrict = true;
   den.schema.user.imports = [
-    den.lib.strict
     (
       { config, lib, ... }:
       {

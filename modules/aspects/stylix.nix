@@ -2,7 +2,7 @@
 
 {
 
-  den.aspects.stylix.nixos = { config, pkgs, ... }: {
+  den.aspects.stylix.nixos = { pkgs, ... }: {
 
     imports = [
       inputs.stylix.nixosModules.default
