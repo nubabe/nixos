@@ -61,8 +61,8 @@ in
       asp.waybar
       asp.keepassxc
       asp.brave
+      asp.brave._.asDefault
       asp.librewolf
-      asp.librewolf._.asDefault
       asp.spotify-player
       asp.doom-emacs
       asp.claude-code
