@@ -34,6 +34,8 @@ _:
 
         xdg.enable = true;
 
+        xdg.mimeApps.enable = true;
+
         home.packages = [
           pkgs.handlr-regex
           xdg-open
