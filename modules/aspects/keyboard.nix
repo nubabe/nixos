@@ -8,6 +8,7 @@
         options = [
           "shift:both_capslock"
           "ctrl:nocaps"
+          "altwin:swap_alt_win"
         ];
       };
     in
