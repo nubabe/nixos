@@ -11,10 +11,15 @@
       };
     };
 
-    provides.asDefault.homeManager = {lib, config, ...}: let package = config.programs.brave-origin.package; in {
-      home.sessionVariables.BROWSER = "${lib.getExe package}";
-      xdg.mimeApps.defaultApplicationPackages = [ package ];
-    };
+    provides.asDefault.homeManager =
+      { lib, config, ... }:
+      let
+        package = config.programs.brave-origin.package;
+      in
+      {
+        home.sessionVariables.BROWSER = "${lib.getExe package}";
+        xdg.mimeApps.defaultApplicationPackages = [ package ];
+      };
   };
 
 }
