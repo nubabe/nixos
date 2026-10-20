@@ -1,0 +1,232 @@
+{
+  "name": "topbar",
+  // "output": ["eDP-1", "DP-1", "DVI-I-1", "DVI-I-2", "HDMI-A-1"],
+  "position": "bottom",
+  "height": 25,
+  "margin-bottom": 3,
+  "margin-left": 5,
+  "margin-right": 5,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/submap",
+  ],
+  "modules-center": [
+    // "image#album-art",
+    "mpris"
+    // "custom/sptlrx",
+  ],
+  "modules-right": [
+    "cpu",
+    "temperature",
+    "battery",
+    "network",
+    // "custom/tailscale",
+    "bluetooth",
+    "wireplumber",
+    "backlight",
+    "clock",
+    "tray"
+    // "custom/notification",
+  ],
+  // "custom/tailscale": {
+  //   "exec": "/home/nubabe/.config/waybar/tailscale.sh",
+  //   "return-type": "json",
+  //   "format": "󱗼",
+  //   "interval": 60
+  // },
+  // "image#album-art": {
+  //   "exec": "/home/nubabe/.config/waybar/album_art.sh",
+  //   "size": 24,
+  //   "interval": 2
+  // },
+  "mpris": {
+    "format": "{player_icon} {status_icon} {title}",
+    "player-icons": {
+      "spotify_player": "󰓇",
+      "firefox": "󰈹",
+      "brave": "b"
+    },
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+    },
+    "max-length": 40,
+    // "ignored-players": ["firefox"],
+    "hide-empty-text": "true"
+  },
+  // "custom/sptlrx": {
+  //   "exec": "sptlrx pipe",
+  //   "hide-empty-text": "true"
+  // },
+  "hyprland/workspaces": {
+    "format": "{icon}{windows} ",
+    "format-window-separator": " ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "title<.*youtube.*>": "󰗃",
+      "class<firefox>": "󰈹",
+      "class<zen>": "󰺕",
+      "class<kitty>": "",
+      "class<kitty> title<spotify_player>": "󰓇",
+      "class<kitty> title<sp>": "󰓇",
+      "class<kitty> title<cava>": "󰺢",
+      "class<kitty> title<.*vim .*>": "",
+      "class<emacs>": "",
+      "class<libreoffice>": "",
+      "class<libreoffice-calc>": "",
+      "class<libreoffice-math>": "",
+      "class<libreoffice-draw>": "",
+      "class<libreoffice-base>": "",
+      "class<libreoffice-writer>": "",
+      "class<libreoffice-impress>": "",
+      "class<org.keepassxc.KeePassXC>": "",
+      "class<org.telegram.desktop>": "",
+    },
+    "show-special": true,
+    // "format-icons": {
+    //   "dflt": "S",
+    //   "10": "",
+    //   "11": "",
+    //   "12": "󰓇",
+    //   "13": "",
+    //   "14": "",
+    // },
+    "ignore-workspaces": ["special:temp"],
+    // "persistent-workspaces": {
+    //   "*": [
+    //     "special:dflt",
+    //     "special:emacs",
+    //     "special:password",
+    //     "special:music",
+    //     "special:zen",
+    //     "special:telegram"
+    //   ]
+    // }
+  },
+  "hyprland/submap": {
+    "always-on": true,
+    "default-submap": "",
+    "format": "{}",
+  },
+  "clock": {
+    "format": "{:%Y-%m-%d %H:%M:%S}",
+    "interval": 1,
+  },
+  "group/power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/lock",
+      "custom/shutdown",
+      "custom/reboot",
+      "custom/exit",
+    ],
+  },
+  "custom/shutdown": {
+    "format": "",
+    "on-click": "shutdown now",
+  },
+  "custom/reboot": {
+    "format": "",
+    "on-click": "reboot",
+  },
+  "custom/exit": {
+    "format": "󰈆",
+    "on-click": "hyprctl dispatch exit",
+  },
+  "custom/lock": {
+    "format": "",
+    "on-click": "hyprlock",
+  },
+  "group/stats": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+    },
+    "modules": ["battery", "cpu", "temperature", "memory"],
+  },
+  "battery": {
+    "format": "{icon}",
+    "tooltip-format": "{capacity:2}%",
+    "interval": 30,
+    "states": {
+      "warning": 40,
+      "critical": 20,
+      "almost": 95,
+      "charged": 100,
+    },
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "{usage:02}% ",
+  },
+  "temperature": {
+    "format": "{icon}",
+    "tooltip-format": "{temperatureC:2}°C",
+    "format-icons": ["", "", "", "", ""],
+    "thermal-zone": "/sys/class/thermal/thermal_zone7/",
+  },
+  "memory": {
+    "format": "{percentage:02}% ",
+  },
+  "bluetooth": {
+    "format": "󰂯",
+    "tooltip-format": "{status}",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format-connected": "{device_alias}",
+    "format-connected-battery": "󰥰",
+    "tooltip-format-connected-battery": "{device_alias}: {device_battery_percentage}%",
+  },
+  "wireplumber": {
+    "format": "{icon}",
+    "tooltip-format": "{volume}%",
+    "format-muted": "󰖁",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰛳",
+    "format-disconnected": "󰅛",
+    "tooltip-format-wifi": "{essid}\n{ipaddr}/{cidr}",
+    "tooltip-format-ethernet": "{ipaddr}/{cidr}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+  },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 5
+  },
+  "backlight": {
+    "format": "{icon}",
+    "tooltip-format": "{percent}%",
+    "format-icons": ["󰃚", "󰃛", "󰃜", "󰃞", "󰃟","󰃝", "󰃠"]
+  },
+  //  "custom/notification": {
+  //   "tooltip": false,
+  //   "format": "{icon}",
+  //   "format-icons": {
+  //     "notification": "<span foreground='red'><sup></sup></span>",
+  //     "none": "",
+  //     "dnd-notification": "<span foreground='red'><sup></sup></span>",
+  //     "dnd-none": "",
+  //     "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+  //     "inhibited-none": "",
+  //     "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+  //     "dnd-inhibited-none": ""
+  //   },
+  //   "return-type": "json",
+  //   "exec-if": "which swaync-client",
+  //   "exec": "swaync-client -swb",
+  //   "on-click": "swaync-client -t -sw",
+  //   "on-click-right": "swaync-client -d -sw",
+  //   "escape": true
+  // },
+}
