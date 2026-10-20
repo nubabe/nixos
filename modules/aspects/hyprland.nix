@@ -12,10 +12,10 @@ in
       asp.uwsm
       asp.greetd
       asp.pipewire
-      asp.cursor
       asp.brightnessctl
       asp.hyprmoncfg
       asp.clipboard
+      asp.wlr-which-key
     ];
 
     nixos = { pkgs, ... }: {
@@ -49,6 +49,7 @@ in
         systemd.enable = false;
 
         extraConfig = ''
+          hl.bind("SUPER + space", hl.dsp.exec_cmd("wlr-which-key"), { description = "Open app launcher" })
           require("${inputs.self}/dots/hypr/*")
         '';
 
