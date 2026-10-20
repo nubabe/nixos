@@ -9,14 +9,16 @@ hl.config({
 	decoration = {
 		border_part_of_window = false,
 		dim_inactive = true,
-		rounding = 10,
+		rounding = 0,
 		blur = {
 			enabled = false,
 			passes = 4,
 			xray = true,
 		},
 		shadow = { enabled = false },
+		motion_blur = { enabled = false },
 	},
+	animations = { enabled = false },
 	misc = {
 		allow_session_lock_restore = true,
 		disable_hyprland_logo = true,
