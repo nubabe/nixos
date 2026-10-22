@@ -32,7 +32,6 @@ in
       asp.network._.wireless
       asp.network._.networkmanager
       asp.bluetooth
-      asp.stylix
       asp.disko
       (asp.swapfile { sizeInGiB = 8; })
       asp.sshd

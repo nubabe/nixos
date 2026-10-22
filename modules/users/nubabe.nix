@@ -42,6 +42,8 @@ in
 
       asp.ssh-access
       asp.keyboard
+
+      asp.stylix
     ];
 
   };
