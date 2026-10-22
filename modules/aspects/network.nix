@@ -3,10 +3,18 @@
 {
 
   den.aspects.network = {
-    nixos.networking = {
-      firewall.enable = true;
-      nftables.enable = true;
-
+    nixos = {
+      networking = {
+        firewall.enable = true;
+        nftables.enable = true;
+        nameservers = [
+          "1.1.1.1"
+          "1.0.0.1"
+        ];
+      };
+      services.resolved = {
+        enable = true;
+      };
     };
 
     provides.wireless = {
