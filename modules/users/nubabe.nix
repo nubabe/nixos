@@ -11,9 +11,22 @@ in
 
     email = "nubabe.me@gmail.com";
 
-    nixos.sops.secrets."userPassword" = {
-      sopsFile = "${inputs.self}/secrets/nubabe.yaml";
-      neededForUsers = true;
+    nixos = { config, ... }: {
+      sops.secrets = {
+        "userPassword" = {
+          sopsFile = "${inputs.self}/secrets/nubabe.yaml";
+          neededForUsers = true;
+        };
+        "sopsAgeKey" = {
+          sopsFile = "${inputs.self}/secrets/nubabe.yaml";
+          owner = config.users.users.nubabe.name;
+          group = config.users.users.nubabe.group;
+        };
+      };
+    };
+
+    homeManager = { osConfig, ... }: {
+      sops.age.keyFile = osConfig.sops.secrets.sopsAgeKey.path;
     };
 
     user = { config, ... }: {
