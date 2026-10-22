@@ -1,8 +1,19 @@
 keys:
   - &nubabe_dev age1lkz2h3qyjj0wc60t3du2tq9s0f3qtx4uqzknqc77wqhkjmq4tyns98u6ux
+  - &nubabe age16zpy4gql9frylp8u6hp4k0dgym95uvn86z2gd79fadffy9j9pqqsqx0g0l
   - &oracle-vps age1ewrvl3mqr0m4t6f647sukqsevxhqkvhkq0nzp7yg76kxgugxvunqph6fau
   - &prv3-9 age1lkza66llepyhj49dwq96a4fsly7qyevjaylly3grsduffekdg9lqpufwrh
 creation_rules:
+  - path_regex: secrets/stami-buchhaltung.RDP.enc
+    key_groups:
+      - age:
+        - *nubabe_dev
+        - *nubabe
+  - path_regex: secrets/stami-buchhaltung.conf.enc$
+    key_groups:
+      - age:
+        - *nubabe_dev
+        - *prv3-9
   - path_regex: secrets.*nubabe.*\.yaml$
     key_groups:
       - age:

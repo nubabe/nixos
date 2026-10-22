@@ -13,6 +13,7 @@ in
       aspect.includes = [
         asp.nubabe-graphical
         den.batteries.primary-user
+        asp.stami-buchhaltung
       ];
       aspect.excludes = [ asp.doom-emacs ];
       stateVersion = "26.05";
