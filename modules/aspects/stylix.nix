@@ -3,7 +3,7 @@
 {
 
   den.aspects.stylix = {
-    nixos = { pkgs, ... }: {
+    nixos = { pkgs, config, ... }: {
 
       imports = [
         inputs.stylix.nixosModules.default
@@ -34,25 +34,20 @@
             package = pkgs.nerd-fonts.caskaydia-cove;
             name = "CaskaydiaCove Nerd Font";
           };
-          serif = {
-            package = pkgs.noto-fonts;
-            name = "Noto Serif";
-          };
-          sansSerif = {
-            package = pkgs.noto-fonts;
-            name = "Noto Sans";
-          };
+          serif = config.stylix.fonts.monospace;
+          sansSerif = config.stylix.fonts.monospace;
           emoji = {
             package = pkgs.noto-fonts-color-emoji;
             name = "Noto Color Emoji";
           };
         };
       };
+      fonts.packages = [ pkgs.noto-fonts ];
 
     };
 
     homeManager =
-      { config, ... }:
+      { config, lib, ... }:
       let
         colors = config.lib.stylix.colors.withHashtag;
         inherit (config) stylix;
@@ -62,7 +57,7 @@
           background = colors.base00;
           color = colors.base05;
           border = colors.base0D;
-          font = "${stylix.fonts.monospace.name} ${stylix.fonts.sizes.popups}";
+          font = "${stylix.fonts.monospace.name} ${lib.toString stylix.fonts.sizes.popups}";
         };
       };
 
